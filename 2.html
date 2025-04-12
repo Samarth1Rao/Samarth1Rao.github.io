@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samarth's Personal Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="snap-container">
+    <!-- SECTION 1: Hero -->
+    <section class="hero" id="section1">
+      <h1>Hi, I'm Samarth!</h1>
+    </section>
+
+    <!-- SECTION 2: About -->
+    <section class="about" id="section2">
+      <!-- Your about section content -->
+    </section>
+
+    <!-- SECTION 3: Birthplace -->
+    <section class="birthplace" id="section3">
+      <!-- Your birthplace content -->
+    </section>
+
+    <!-- SECTION 4: Education -->
+    <section class="education" id="section4">
+      <!-- Your education content -->
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.querySelector('.snap-container');
+      const sections = document.querySelectorAll('section');
+      let currentSection = 0;
+      let isScrolling = false;
+      let scrollTimeout;
+
+      // Initialize scroll position
+      window.scrollTo(0, 0);
+
+      // Handle wheel event
+      container.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        
+        if (isScrolling) return;
+        
+        // Determine scroll direction
+        const direction = e.deltaY > 0 ? 1 : -1;
+        
+        // Calculate next section
+        let nextSection = currentSection + direction;
+        
+        // Ensure next section is within bounds
+        nextSection = Math.max(0, Math.min(nextSection, sections.length - 1));
+        
+        // Only proceed if we're changing sections
+        if (nextSection !== currentSection) {
+          isScrolling = true;
+          currentSection = nextSection;
+          
+          // Scroll to the section
+          sections[currentSection].scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // Reset scrolling flag after animation completes
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+          }, 1000);
+        }
+      }, { passive: false });
+
+      // Handle touch events for mobile
+      let touchStartY = 0;
+      
+      container.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      container.addEventListener('touchend', function(e) {
+        if (isScrolling) return;
+        
+        const touchEndY = e.changedTouches[0].clientY;
+        const direction = touchEndY < touchStartY ? 1 : -1;
+        
+        let nextSection = currentSection + direction;
+        nextSection = Math.max(0, Math.min(nextSection, sections.length - 1));
+        
+        if (nextSection !== currentSection) {
+          isScrolling = true;
+          currentSection = nextSection;
+          
+          sections[currentSection].scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+          }, 1000);
+        }
+      }, { passive: false });
+    });
+  </script>
+</body>
+</html>
