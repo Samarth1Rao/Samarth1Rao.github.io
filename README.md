@@ -1,5 +1,3 @@
-# ISS_A3
-
 ## Name - Samarth Srihari Rao
 ## Roll No. - 2024111035
 
