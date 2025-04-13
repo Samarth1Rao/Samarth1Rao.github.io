@@ -68,10 +68,10 @@ function countTokens(tokens, targetWords) {
   return counts;
 }
 
-// if(text.length < 10000) {
-//     resultsDiv.innerHTML = '<p>Error: Text must contain at least 10,000 characters.</p>';
-//     return;
-// }
+if(text.length < 10000) {
+    resultsDiv.innerHTML = '<p>Error: Text must contain at least 10,000 characters.</p>';
+    return;
+}
 
 function formatCounts(counts) {
   return Object.entries(counts)
