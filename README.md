@@ -14,6 +14,7 @@ URL - samarth1rao.github.io
 - As part of question 3, there is a text_analyser section which does the needful.
 
 
-#### ASSUMPTION MADE IN QUESTION 3
+#### ASSUMPTION MADE
 
-The box to input text asks for 10k words, but as per the clarification made on WhatsApp (S25 Course Group, 13/04), it will accept any string with >=10000 characters.
+1. The box to input text asks for 10k words, but as per the clarification made on WhatsApp (S25 Course Group, 13/04), it will accept any string with >=10000 characters.
+2. The website can be viewed from any device.
