@@ -140,7 +140,7 @@ section {
 
 .education h2 {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
   color: #333;
 }
 
@@ -177,7 +177,8 @@ section {
   border-radius: 50px;
   font-size: 1.1rem;
   transition: background-color 0.3s ease;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .cv-button:hover {
@@ -222,6 +223,9 @@ section {
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.1);
+  word-break: break-word;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .contact-link:hover {
@@ -264,7 +268,7 @@ section {
 
 #results {
   text-align: left;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   padding: 1rem;
   background-color: #f5f5f5;
   border-radius: 8px;
@@ -283,7 +287,12 @@ section {
 
 @media (max-width: 768px) {
   .content-wrapper {
-      flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .contact-list li {
+    font-size: 1rem;
+    word-break: break-word;
   }
 
   #textInput {
@@ -327,4 +336,8 @@ section {
   }
 }
 
-
+#text-analysis-title {
+  margin-top: 100px;
+  display: block;
+  text-align: center;
+}
