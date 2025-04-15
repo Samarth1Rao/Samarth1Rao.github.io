@@ -9,18 +9,17 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- In my website, it is possible to seamlessly scroll between sections. This is done using the below wrapper.  -->
     <div class="snap-container">
       <!-- SECTION 1: intro -->
-      <section class="intro">
+      <section class="intro geometric-background">
         <h1>Hi, I'm Samarth Rao!</h1>
-        <!-- <p>Scroll to learn more about me</p> -->
+        <p class="subtitle">A Computer Science fresher at IIIT-Hyderabad</p>
       </section>
 
       <!-- SECTION 2: About -->
@@ -38,88 +37,142 @@
             <p>
               I'm a Computer Science fresher at the International Institute of
               Information Technology, Hyderabad. I'm originally from Bengaluru,
-              Karnataka and I have a deep interest in getting to know everything
-              about the world around me.
+              Karnataka and I grew up in Eindhoven, The Netherlands for 6 years.
+              I have a deep interest in getting to know everything about the
+              world around me, and the way I like to do this most is by having
+              deep conversations with everyone around me.
             </p>
             <p>
-              I swim for fun, and love to learn by having random conversations
-              with everyone.
+              As for hobbies? I swim for fun, enjoy cooking (and eating) and
+              love to watch a variety of TV shows and YouTube videos online. My
+              favourites TV shows are without a doubt Breaking Bad and Modern
+              Family, while on YouTube I enjoy watching educational videos (3B1B
+              / Kurzgesagt), short sketches (SNL / Studio C) or just
+              doomscrolling shorts.
+            </p>
+            <p>
+              For the last year now, I've been a 1st year student at
+              IIIT-Hyderabad, pursuing a BTech and MS by Research in Computer
+              Science and Engineering (dubbed 'CSD'), and I'll be here till
+              2029. Over here, you can find me hanging out with my friends /
+              cycling through the campus roads / struggling in an assignment.
+              I’m excited to keep exploring, learning, and making the most of
+              every moment at IIIT Hyderabad as I continue my journey in
+              computer science and research
             </p>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 3: Birthplace -->
-      <section class="birthplace">
+      <!-- SECTION 3: Gallery -->
+      <section class="gallery">
         <div class="content-wrapper">
-          <h2>My Childhood & My Birthplace</h2>
-          <p>
-            Here are some glimpses from my childhood, and my birthplace -
-            Bengaluru, Karnataka.
-          </p>
-          <div class="birthplace-gallery">
-            <img src="assets/images/birthplace1.jpeg" alt="amma photo" />
-            <img src="assets/images/birthplace3.jpeg" alt="birthplace2" />
-            <img src="assets/images/birthplace2.JPG" alt="birthplace3" />
-            <img src="assets/images/blr2.jpg" alt="Bengaluru" />
-            <img src="assets/images/birthplace5.jpeg" alt="birthplace5" />
-            <img src="assets/images/birthplace6.jpg" alt="birthplace6" />
-            <img src="assets/images/blr1.jpg" alt="bengaluru traffic" />
-            <img src="assets/images/birthplace8.JPG" alt="birthplace8" />
-            <img
-              src="assets/images/birthplace9.jpeg"
-              alt="another family photo"
-            />
-            <img src="assets/images/birthplace10.JPG" alt="birthplace10" />
+          <h2>Glimpses into My Childhood & My Birthplace</h2>
+          <p class="subtitle">Here's a glimpse into my life and my birthplace.</p>
+          <div class="gallery-grid">
+            <div class="gallery-category" onclick="toggleGallery(this)">
+              <h3>My Birthplace - Bengaluru</h3>
+              <p class="click-hint">Click to expand</p>
+              <div class="category-images">
+                <img src="assets/images/blr2.jpg" alt="Bengaluru" />
+                <img src="assets/images/blr3.webp" alt="Bengaluru" />
+                <img src="assets/images/birthplace1.jpeg" alt="Bengaluru" />
+                <img src="assets/images/blr1.jpg" alt="Bengaluru" />
+              </div>
+            </div>
+
+            <div class="gallery-category" onclick="toggleGallery(this)">
+              <h3>My Childhood</h3>
+              <p class="click-hint">Click to expand</p>
+              <div class="category-images">
+                <img src="assets/images/birthplace8.JPG" alt="family" />
+                <img src="assets/images/birthplace1.jpeg" alt="amma" />
+                <img src="assets/images/birthplace5.jpeg" alt="daddy" />
+                <img src="assets/images/birthplace2.JPG" alt="vishu" />
+              </div>
+            </div>
+
+            <div class="gallery-category" onclick="toggleGallery(this)">
+              <h3>IIIT-Hyderabad</h3>
+              <p class="click-hint">Click to expand</p>
+              <div class="category-images">
+                <img src="assets/images/iiith1.jpeg" alt="IIIT-H" />
+                <img src="assets/images/iiith2.JPG" alt="IIIT-H" />
+                <img src="assets/images/iiith3.jpeg" alt="IIIT-H" />
+                <img src="assets/images/iiith4.JPG" alt="IIIT-H" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- SECTION 4: Education -->
       <section class="education">
-        <div class="content-wrapper">
-          <h2>Education & Skills</h2>
-          <h3>Educational Background</h3>
-          <p>
-            School - National Academy For Learning, Bengaluru (2013-2024)<br />
-            BTech + MS, Computer Science and Engineering (CSD), IIIT Hyderabad
-            (2024-present)
-          </p>
-          <h2>Achievements / Awards</h2>
-          <p>
-            Megathon 2024 Winner (OSDG Prompt)<br />
-            That's it lol
-          </p>
-          <h2>Technical Skills</h2>
-          <ul class="skills">
-            <li>C/C++</li>
-            <li>Python</li>
-            <li>HTML/CSS/JS</li>
-            <li>Arduino IDE</li>
-          </ul>
-          <a
-            href="assets/docs/SamarthRao_CV.pdf"
-            class="cv-button"
-            target="_blank"
-            >Download My CV</a
-          >
-          <h2>Contact Me</h2>
-          <ul class="contact-list">
-            <li>
-              Call:
-              <a href="tel:+91 9972613628" class="contact-link"
-                >+91 9972613628</a
-              >
-            </li>
-            <li>
-              Email:
+        <div class="content-wrapper grid-layout">
+          <div class="education-card">
+            <h2>Education</h2>
+            <div class="education-item">
+              <h3>School</h3>
+              <p>National Academy For Learning, Bengaluru (2013-2024)</p>
+            </div>
+            <div class="education-item">
+              <h3>University</h3>
+              <p>
+                IIIT Hyderabad - <br> BTech + MS, Computer Science and Engineering<br />
+                (2024-present)
+              </p>
+            </div>
+          </div>
+
+          <div class="achievements-card">
+            <h2>Achievements</h2>
+            <div class="achievement-item">
+              <h3>Megathon 2024</h3>
+              <p>Winner, 1st Place (OSDG Prompt)</p>
+            </div>
+          </div>
+
+          <div class="skills-card">
+            <h2>Technical Skills</h2>
+            <ul class="skills">
+              <li>C/C++</li>
+              <li>Python</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Java</li>
+              <li>NumPy</li>
+              <li>x86-64 Architecture</li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <h2>Contact Me</h2>
+            <div class="contact-actions">
               <a
-                href="mailto:samarth.rao@research.iiit.ac.in"
-                class="contact-link"
-                >samarth.rao@research.iiit.ac.in</a
+                href="assets/docs/SamarthRao_CV.pdf"
+                class="cv-button"
+                target="_blank"
+                >Download My CV</a
               >
-            </li>
-          </ul>
+              <ul class="contact-list">
+                <li class="contact-me">
+                  Call:
+                  <a href="tel:+91 9876543210" class="contact-link"
+                    >+91 9876543210</a
+                  >
+                </li>
+                <li class="contact-me">
+                  Email:
+                  <a
+                    href="mailto:samarth.rao@research.iiit.ac.in"
+                    class="contact-link"
+                    >samarth.rao@research.iiit.ac.in</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -141,5 +194,16 @@
     </div>
     <script src="script.js"></script>
     <script src="text_analyser.js"></script>
+    <script>
+      // Gallery toggle function
+      function toggleGallery(element) {
+        const images = element.querySelector(".category-images");
+        images.classList.toggle("expanded");
+        const hint = element.querySelector(".click-hint");
+        hint.textContent = images.classList.contains("expanded")
+          ? "Click to collapse"
+          : "Click to expand";
+      }
+    </script>
   </body>
 </html>

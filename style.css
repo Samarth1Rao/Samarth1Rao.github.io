@@ -6,18 +6,72 @@
 }
 
 body {
-  /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-family: 'Cormorant Garamond', serif;
-  /* font-weight: bolder; */
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  color: white;
 }
 
+/* Modified geometric-background to be applied directly to the intro section */
+.geometric-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.geometric-background::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+      linear-gradient(45deg, rgba(255,255,255,0.1) 25%, 
+      transparent 25%, 
+      transparent 75%, 
+      rgba(255,255,255,0.1) 75%),
+      linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, 
+      transparent 25%, 
+      transparent 75%, 
+      rgba(255,255,255,0.1) 75%);
+  background-size: 60px 60px;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.geometric-background h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.geometric-background .subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+}
+
+/* Optional animation for the pattern */
+@keyframes movePattern {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+.geometric-background::before {
+  animation: movePattern 4s linear infinite;
+}
 /* Snap container to enable snap scrolling */
 .snap-container {
   height: 100vh;
   width: 100%;
-  scroll-snap-type: y mandatory; /* Vertical mandatory snapping */
+  scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
 
@@ -32,25 +86,66 @@ section {
 .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+/* INTRO SECTION - Modified to work with the geometric background */
 .intro {
-  background-color: #7c4dff;
   color: white;
+  text-align: center;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  flex-direction: column;
 }
 
 .intro h1 {
   font-family: 'Cormorant Garamond';
-  font-weight: bolder;
-  font-style: italic;
-  font-size: 5rem;
+  font-weight: 700;
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
 }
 
-/* About Section */
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: 1rem;
+  position: relative; 
+  z-index: 2;
+}
+
+.gallery-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: 1rem;
+  position: relative; 
+  z-index: 2;
+}
+
+
+.silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 400px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'%3E%3Cpath d='M100,20 C120,20 140,30 140,50 C140,70 120,80 100,80 C80,80 60,70 60,50 C60,30 80,20 100,20 Z M40,90 L40,270 C40,290 60,300 80,300 L120,300 C140,300 160,290 160,270 L160,90 C160,70 140,60 120,60 L80,60 C60,60 40,70 40,90 Z' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  opacity: 0.1;
+}
+
+/* ABOUT SECTION */
 .about {
   background-color: #f5f5f5;
 }
@@ -79,6 +174,7 @@ section {
 .about-text {
   flex: 2;
   padding-left: 3rem;
+  text-align: justify;
 }
 
 .about-text h2 {
@@ -91,118 +187,206 @@ section {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+  text-align: justify;
   color: #555;
 }
 
-/* Birthplace Section */
-.birthplace {
+/* GALLERY SECTION */
+.gallery {
   background-color: #ffffff;
   text-align: center;
 }
 
-.birthplace h2 {
+.gallery h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-.birthplace p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: #555;
-}
-
-.birthplace-gallery {
+.gallery-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   margin-top: 2rem;
 }
 
-.birthplace-gallery img {
+.gallery-category {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.gallery-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3498db;
+}
+
+.gallery-category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.click-hint {
+  color: #3498db;
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.category-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  margin-top: 1rem;
+}
+
+.category-images.expanded {
+  max-height: 500px;
+}
+
+.category-images img {
   width: 100%;
-  height: 250px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   transition: transform 0.3s ease;
 }
 
-.birthplace-gallery img:hover {
-  transform: scale(1.03);
+.category-images img:hover {
+  transform: scale(1.05);
 }
 
-/* Education Section */
+/* EDUCATION SECTION */
 .education {
   background-color: #f5f5f5;
-  text-align: center;
 }
 
-.education h2 {
-  font-size: 2.5rem;
-  /* margin-bottom: 1.5rem; */
-  color: #333;
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
 }
 
-.education p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: #555;
+.education-card, .achievements-card, 
+.skills-card, .contact-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover, .achievements-card:hover,
+.skills-card:hover, .contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.education-card h2, .achievements-card h2,
+.skills-card h2, .contact-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.education-card p, .achievements-card p,
+.skills-card p, .contact-card p {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  color: #2c3e50;
+  /* border-bottom: 2px solid #3498db; */
+  padding-bottom: 0.5rem;
+}
+
+.contact-card a {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  color: whitesmoke;
+  /* border-bottom: 2px solid #3498db; */
+  padding-bottom: 0.5rem;
+}
+
+.contact-me {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  color: #2c3e50;
+  /* border-bottom: 2px solid #3498db; */
+  padding-bottom: 0.5rem;
+}
+
+.contact-card .contact-link {
+  color: black;
+}
+
+.education-item {
+  margin-bottom: 1.5rem;
+}
+
+.education-item h3 {
+  font-size: 1.2rem;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-item {
+  margin-bottom: 1.5rem;
+}
+
+.achievement-item h3 {
+  font-size: 1.2rem;
+  color: #3498db;
+  margin-bottom: 0.5rem;
 }
 
 .skills {
   display: flex;
-  justify-content: center;
-  position: relative;
   flex-wrap: wrap;
   list-style: none;
-  margin: 2rem 0;
+  margin-top: 1rem;
 }
 
 .skills li {
-  background-color: #7c4dff;
+  background-color: #3498db;
   color: white;
-  padding: 0.8rem 1.5rem;
-  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  margin: 0.3rem;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.skills li:hover {
+  background-color: #2c3e50;
+  transform: scale(1.05);
 }
 
 .cv-button {
   display: inline-block;
-  background-color: #333;
+  background-color: #2c3e50;
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.5rem;
   text-decoration: none;
   border-radius: 50px;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  border: none;
+  cursor: pointer;
 }
 
 .cv-button:hover {
-  background-color: #7c4dff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .about .content-wrapper {
-    flex-direction: column;
-  }
-  
-  .about-text {
-    padding-left: 0;
-    padding-top: 2rem;
-  }
-  
-  .birthplace-gallery {
-    grid-template-columns: 1fr;
-  }
-  
-  .intro h1 {
-    font-size: 3rem;
-  }
+  background-color: #3498db;
+  transform: translateY(-2px);
 }
 
 .contact-list {
@@ -212,31 +396,35 @@ section {
 }
 
 .contact-list li {
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
   font-size: 1.1rem;
 }
 
 .contact-link {
-  color: blue;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 0.2rem 0.5rem;
+  color: black;
+  /* text-decoration: none; */
+  /* transition: color 0.3s ease; */
+  /* padding: 0.2rem 0.5rem;
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
   word-break: break-word;
-  display: inline-block;
-  max-width: 100%;
+  display: inline-block; */
 }
 
 .contact-link:hover {
-  color: #7c4dff;
-  background-color: rgba(255, 255, 255, 0.2);
+  color: #2c3e50;
+  text-decoration: underline;
 }
 
-/* Text Analysis Section */
+/* TEXT ANALYSIS SECTION */
 .text-analysis {
   background-color: #ffffff;
   text-align: center;
+}
+
+#text-analysis-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
 #textInput {
@@ -248,10 +436,11 @@ section {
   border-radius: 8px;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
+  resize: vertical;
 }
 
 #analyzeBtn {
-  background-color: #7c4dff;
+  background-color: #3498db;
   color: white;
   border: none;
   padding: 0.8rem 2rem;
@@ -259,21 +448,22 @@ section {
   cursor: pointer;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 #analyzeBtn:hover {
-  background-color: #5e35b1;
+  background-color: #2c3e50;
+  transform: translateY(-2px);
 }
 
 #results {
   text-align: left;
-  /* margin-top: 2rem; */
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: #f5f5f5;
   border-radius: 8px;
   max-height: 400px;
   overflow-y: auto;
+  margin-top: 1.5rem;
 }
 
 .result-group {
@@ -281,63 +471,106 @@ section {
 }
 
 .result-group h3 {
-  color: #7c4dff;
+  color: #3498db;
   margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
 
-@media (max-width: 768px) {
-  .content-wrapper {
-    padding: 0 1rem;
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .intro h1 {
+    font-size: 3.5rem;
   }
-
-  .contact-list li {
-    font-size: 1rem;
-    word-break: break-word;
+  
+  .subtitle {
+    font-size: 1.2rem;
   }
-
-  #textInput {
-      height: auto;
-      font-size: 0.9rem;
+  
+  .silhouette {
+    width: 250px;
+    height: 350px;
   }
-
-  #results {
-      max-height: 300px;
-      overflow-y: auto;
-  }
-}
-
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.item {
-  flex: 1 1 calc(100% - 20px); /* Full width minus padding */
-  margin: 10px;
 }
 
 @media (max-width: 768px) {
   section {
-    display: block;
     height: auto;
-    padding: 20px 10px;
-    overflow: visible;
+    padding: 2rem 1rem;
+    scroll-snap-align: none;
   }
-
-  .skills {
+  
+  .about .content-wrapper {
     flex-direction: column;
-    align-items: center;
+    padding-top: 2rem;
   }
-
-  .skills button {
-    width: 80%;
+  
+  .about-text {
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+  
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
     font-size: 1rem;
+  }
+  
+  .silhouette {
+    width: 180px;
+    height: 250px;
+  }
+  
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  #textInput {
+    height: 150px;
+  }
+  
+  #results {
+    max-height: 300px;
   }
 }
 
-#text-analysis-title {
-  margin-top: 100px;
-  display: block;
-  text-align: center;
+@media (max-width: 480px) {
+  .intro h1 {
+    font-size: 2rem;
+  }
+  
+  .about-text h2, .gallery h2, 
+  #text-analysis-title {
+    font-size: 1.8rem;
+  }
+  
+  .education-card h2, .achievements-card h2,
+  .skills-card h2, .contact-card h2 {
+    font-size: 1.5rem;
+  }
+
+   .education-card p {
+    display: block !important;
+    visibility: visible !important;
+    color: red !important;
+  }
+  
+  .category-images {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills li {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
 }
