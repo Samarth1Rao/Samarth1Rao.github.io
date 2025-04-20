@@ -460,6 +460,7 @@ section {
   text-align: left;
   padding: 1.5rem;
   background-color: #f5f5f5;
+  color: #333;
   border-radius: 8px;
   max-height: 400px;
   overflow-y: auto;
@@ -468,10 +469,11 @@ section {
 
 .result-group {
   margin-bottom: 1.5rem;
+  color: #333;
 }
 
 .result-group h3 {
-  color: #3498db;
+  color: #333;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
 }
